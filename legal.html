@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentions légales & CGU — Scan Ton Contrat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Sans:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f8f9fb; --bg-card: #ffffff; --fg: #0d1526; --fg-muted: #4a5578;
+    --border: #dde1ec; --teal-500: #06b6d4; --navy-800: #0f1f4a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #080d1a; --bg-card: #0f1628; --fg: #e8edf8; --fg-muted: #7a88aa;
+      --border: #1a2240; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #080d1a; --bg-card: #0f1628; --fg: #e8edf8; --fg-muted: #7a88aa;
+    --border: #1a2240; color-scheme: dark;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; }
+  .header {
+    background: var(--navy-800); padding: 20px 24px; display: flex; align-items: center; gap: 16px;
+  }
+  .logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; }
+  .logo span { color: var(--teal-500); }
+  .container { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+  h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+  .updated { color: var(--fg-muted); font-size: 14px; margin-bottom: 48px; }
+  .nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; border-bottom: 2px solid var(--border); padding-bottom: 0; }
+  .tab-btn {
+    padding: 10px 20px; border: none; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500; color: var(--fg-muted); border-bottom: 2px solid transparent;
+    margin-bottom: -2px; transition: all 0.2s;
+  }
+  .tab-btn.active { color: var(--teal-500); border-bottom-color: var(--teal-500); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  section { margin-bottom: 36px; }
+  h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: var(--fg); }
+  p { color: var(--fg-muted); margin-bottom: 12px; }
+  ul { color: var(--fg-muted); padding-left: 20px; margin-bottom: 12px; }
+  ul li { margin-bottom: 6px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  a { color: var(--teal-500); }
+  strong { color: var(--fg); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="logo">Scan Ton<span> Contrat</span></a>
+</div>
+
+<div class="container">
+  <h1>Informations légales</h1>
+  <p class="updated">Dernière mise à jour : octobre 2026</p>
+
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('mentions')">Mentions légales</button>
+    <button class="tab-btn" onclick="showTab('cgu')">CGU</button>
+    <button class="tab-btn" onclick="showTab('rgpd')">RGPD & Confidentialité</button>
+  </div>
+
+  <!-- MENTIONS LÉGALES -->
+  <div id="mentions" class="tab-content active">
+    <section>
+      <h2>Éditeur du site</h2>
+      <div class="card">
+        <p><strong>Raison sociale :</strong> AGA Consulting</p>
+        <p><strong>Forme juridique :</strong> SASU (Société par Actions Simplifiée Unipersonnelle)</p>
+        <p><strong>SIRET :</strong> 89168438300021</p>
+        <p><strong>Siège social :</strong> France</p>
+        <p><strong>Email :</strong> <a href="mailto:contact@scantoncontrat.fr">contact@scantoncontrat.fr</a></p>
+        <p><strong>Directeur de publication :</strong> AGA Consulting</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Hébergement</h2>
+      <div class="card">
+        <p><strong>Hébergeur :</strong> Vercel Inc.</p>
+        <p><strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis</p>
+        <p><strong>Site :</strong> <a href="https://vercel.com" target="_blank">vercel.com</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Intelligence artificielle</h2>
+      <p>L'analyse des contrats est réalisée par l'API Claude d'Anthropic (anthropic.com). Les documents uploadés sont transmis à Anthropic pour traitement et ne sont pas conservés sur nos serveurs.</p>
+    </section>
+
+    <section>
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble du contenu du site (textes, graphismes, logo, code) est la propriété exclusive d'AGA Consulting. Toute reproduction est interdite sans autorisation préalable.</p>
+    </section>
+
+    <section>
+      <h2>Limitation de responsabilité</h2>
+      <p>Les analyses fournies par Scan Ton Contrat sont données à titre informatif et indicatif. Elles ne constituent pas un conseil en assurance au sens réglementaire. AGA Consulting ne peut être tenu responsable des décisions prises sur la base de ces analyses.</p>
+    </section>
+  </div>
+
+  <!-- CGU -->
+  <div id="cgu" class="tab-content">
+    <section>
+      <h2>Objet</h2>
+      <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du service Scan Ton Contrat, accessible à l'adresse <strong>scantoncontrat.fr</strong>, édité par AGA Consulting.</p>
+    </section>
+
+    <section>
+      <h2>Description du service</h2>
+      <p>Scan Ton Contrat est un service d'analyse automatisée de contrats d'assurance par intelligence artificielle. Le service permet à l'utilisateur de :</p>
+      <ul>
+        <li>Uploader un contrat PDF (mutuelle, habitation, auto, emprunteur, etc.)</li>
+        <li>Obtenir une analyse automatique des garanties, points forts et points faibles</li>
+        <li>Recevoir une estimation des économies potentielles</li>
+        <li>Être mis en relation avec des alternatives potentiellement moins chères</li>
+      </ul>
+      <p>Le service est <strong>gratuit</strong> pour l'utilisateur final. AGA Consulting est rémunéré par des commissions versées par les assureurs partenaires en cas de souscription.</p>
+    </section>
+
+    <section>
+      <h2>Conditions d'accès</h2>
+      <p>Le service est accessible à toute personne physique majeure résidant en France. L'utilisation du service implique l'acceptation des présentes CGU.</p>
+    </section>
+
+    <section>
+      <h2>Obligations de l'utilisateur</h2>
+      <ul>
+        <li>Ne soumettre que des documents vous appartenant ou pour lesquels vous avez les droits</li>
+        <li>Ne pas utiliser le service à des fins frauduleuses ou illégales</li>
+        <li>Fournir des informations exactes lors des prises de contact</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Nature du service et conseil en assurance</h2>
+      <p>Les analyses fournies sont générées automatiquement par intelligence artificielle et ont un caractère <strong>purement informatif et indicatif</strong>. Elles ne constituent pas :</p>
+      <ul>
+        <li>Un conseil personnalisé en assurance au sens de la directive DDA</li>
+        <li>Une recommandation d'achat ou de résiliation de contrat</li>
+        <li>Une analyse juridique ou actuarielle certifiée</li>
+      </ul>
+      <p>Tout changement de contrat d'assurance doit faire l'objet d'une étude personnalisée par un professionnel habilité.</p>
+    </section>
+
+    <section>
+      <h2>Limitation de responsabilité</h2>
+      <p>AGA Consulting s'efforce de fournir des analyses de qualité mais ne garantit pas leur exactitude, exhaustivité ou adéquation à votre situation particulière. AGA Consulting ne saurait être tenu responsable de toute perte financière résultant d'une décision prise sur la base des analyses fournies.</p>
+    </section>
+
+    <section>
+      <h2>Modification des CGU</h2>
+      <p>AGA Consulting se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés des modifications par mise à jour de la date en haut de cette page.</p>
+    </section>
+
+    <section>
+      <h2>Droit applicable</h2>
+      <p>Les présentes CGU sont soumises au droit français. Tout litige relève de la compétence des tribunaux français.</p>
+    </section>
+  </div>
+
+  <!-- RGPD -->
+  <div id="rgpd" class="tab-content">
+    <section>
+      <h2>Responsable du traitement</h2>
+      <div class="card">
+        <p><strong>AGA Consulting</strong> — SIRET 89168438300021</p>
+        <p>Contact : <a href="mailto:contact@scantoncontrat.fr">contact@scantoncontrat.fr</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Données collectées</h2>
+      <p>Lors de l'utilisation du service, nous collectons :</p>
+      <ul>
+        <li><strong>Contenu du PDF uploadé :</strong> transmis à l'API Anthropic pour analyse, non stocké sur nos serveurs</li>
+        <li><strong>Adresse email :</strong> si vous remplissez le formulaire de contact (via Formspree)</li>
+        <li><strong>Données de navigation :</strong> logs serveur, adresse IP (hébergeur Vercel)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Finalités du traitement</h2>
+      <ul>
+        <li>Fournir l'analyse automatisée du contrat</li>
+        <li>Vous recontacter suite à votre demande</li>
+        <li>Assurer la sécurité et le bon fonctionnement du service</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Base légale</h2>
+      <ul>
+        <li>Exécution du service (analyse) : <strong>exécution du contrat</strong></li>
+        <li>Email de contact : <strong>consentement</strong></li>
+        <li>Logs techniques : <strong>intérêt légitime</strong></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Durée de conservation</h2>
+      <ul>
+        <li><strong>PDF uploadé :</strong> non conservé — traitement en temps réel uniquement</li>
+        <li><strong>Email :</strong> conservé jusqu'à désinscription ou 3 ans sans activité</li>
+        <li><strong>Logs serveur :</strong> 12 mois maximum</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Sous-traitants</h2>
+      <div class="card">
+        <p><strong>Anthropic</strong> (anthropic.com) — Traitement IA des documents<br>Politique de confidentialité : <a href="https://www.anthropic.com/legal/privacy" target="_blank">anthropic.com/legal/privacy</a></p>
+      </div>
+      <div class="card">
+        <p><strong>Vercel</strong> (vercel.com) — Hébergement<br>Politique de confidentialité : <a href="https://vercel.com/legal/privacy-policy" target="_blank">vercel.com/legal/privacy-policy</a></p>
+      </div>
+      <div class="card">
+        <p><strong>Formspree</strong> (formspree.io) — Formulaire de contact<br>Politique de confidentialité : <a href="https://formspree.io/legal/privacy-policy" target="_blank">formspree.io/legal/privacy-policy</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Vos droits</h2>
+      <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Accès</strong> à vos données personnelles</li>
+        <li><strong>Rectification</strong> de données inexactes</li>
+        <li><strong>Suppression</strong> de vos données</li>
+        <li><strong>Opposition</strong> au traitement</li>
+        <li><strong>Portabilité</strong> de vos données</li>
+        <li><strong>Limitation</strong> du traitement</li>
+      </ul>
+      <p>Pour exercer ces droits : <a href="mailto:contact@scantoncontrat.fr">contact@scantoncontrat.fr</a></p>
+      <p>Vous pouvez également introduire une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank">cnil.fr</a></p>
+    </section>
+
+    <section>
+      <h2>Cookies</h2>
+      <p>Le site n'utilise pas de cookies de tracking ou publicitaires. Seuls des cookies techniques strictement nécessaires au fonctionnement du service peuvent être utilisés.</p>
+    </section>
+
+    <section>
+      <h2>Sécurité</h2>
+      <p>Les documents uploadés sont transmis via HTTPS (connexion chiffrée). Ils ne sont pas stockés sur nos serveurs et sont uniquement traités en temps réel par l'API Anthropic.</p>
+    </section>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
