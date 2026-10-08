@@ -1,6 +1,21 @@
+// Rate limiting simple en mémoire (réinitialisé à chaque cold start)
+const rateLimitMap = new Map();
+const RATE_LIMIT = 5;
+const RATE_WINDOW = 60 * 60 * 1000; // 1 heure
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.socket?.remoteAddress || 'unknown';
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip) || { count: 0, start: now };
+  if (now - entry.start > RATE_WINDOW) { entry.count = 0; entry.start = now; }
+  entry.count++;
+  rateLimitMap.set(ip, entry);
+  if (entry.count > RATE_LIMIT) {
+    return res.status(429).json({ error: 'Trop de demandes. Réessayez dans une heure.' });
   }
 
   const { pdfBase64, contractType } = req.body;
@@ -68,7 +83,7 @@ Règles importantes :
     if (!response.ok) {
       const err = await response.json();
       console.error('Anthropic error:', err);
-      return res.status(500).json({ error: 'Erreur analyse IA', detail: err });
+      return res.status(500).json({ error: 'Erreur analyse IA' });
     }
 
     const data = await response.json();
@@ -80,6 +95,24 @@ Règles importantes :
       result = JSON.parse(jsonMatch ? jsonMatch[0] : text);
     } catch {
       result = { erreur: 'Impossible de parser la réponse' };
+    }
+
+    // Sauvegarde en base (fire & forget)
+    if (!result.erreur) {
+      fetch(`${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/save-analysis`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type_contrat: result.type_contrat,
+          assureur_actuel: result.assureur_actuel,
+          cotisation_mensuelle: result.cotisation_mensuelle,
+          garanties: result.garanties_principales,
+          analyse_brute: result,
+          score_qualite: result.score_optimisation,
+          points_faibles: result.points_faibles,
+          economie_estimee_mensuelle: result.economie_estimee_mensuelle,
+        }),
+      }).catch(() => {});
     }
 
     return res.status(200).json(result);
