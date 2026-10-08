@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 2048,
+        max_tokens: 3000,
         messages: [
           {
             role: 'user',
@@ -34,19 +34,30 @@ export default async function handler(req, res) {
               },
               {
                 type: 'text',
-                text: `Tu es un expert en assurance français. Analyse ce contrat et réponds UNIQUEMENT en JSON valide avec cette structure exacte:
+                text: `Tu es un expert courtier en assurance français avec 20 ans d'expérience. Analyse ce contrat d'assurance en détail et réponds UNIQUEMENT en JSON valide avec cette structure exacte (sans texte avant ou après) :
+
 {
-  "type_contrat": "mutuelle santé | assurance auto | assurance habitation | assurance emprunteur | autre",
-  "assureur_actuel": "nom de l'assureur",
-  "cotisation_mensuelle": nombre en euros ou null,
-  "garanties_principales": ["garantie 1", "garantie 2", "garantie 3"],
-  "points_forts": ["point 1", "point 2"],
-  "points_faibles": ["point 1", "point 2"],
-  "economie_estimee_mensuelle": nombre en euros (estimation réaliste de ce qu'on peut économiser),
-  "recommandations": ["recommandation 1", "recommandation 2"],
-  "score_optimisation": nombre entre 1 et 10 (10 = très optimisable)
+  "type_contrat": "mutuelle santé" | "assurance auto" | "assurance habitation" | "assurance emprunteur" | "contrat énergie" | "autre",
+  "assureur_actuel": "nom exact de l'assureur tel qu'écrit dans le document",
+  "cotisation_mensuelle": nombre décimal en euros (cherche le montant mensuel, divise par 12 si annuel) ou null si introuvable,
+  "garanties_principales": ["liste de 3 à 6 garanties clés détectées dans le contrat, formulées simplement"],
+  "points_forts": ["2 à 4 vrais points forts de ce contrat spécifique"],
+  "points_faibles": ["2 à 4 vraies lacunes ou surcoûts détectés dans ce contrat"],
+  "economie_estimee_mensuelle": nombre entier en euros (estimation réaliste entre 10% et 35% de la cotisation selon le marché actuel),
+  "recommandations": ["3 à 5 recommandations concrètes et actionnables pour l'assuré"],
+  "score_optimisation": nombre entier entre 1 et 10 (1=contrat optimal difficile à battre, 10=contrat très coûteux à changer absolument),
+  "details_garanties": {
+    "franchise": "montant de la franchise si mentionné ou null",
+    "plafond_annuel": "plafond de remboursement annuel si mentionné ou null",
+    "delai_carence": "délai de carence si mentionné ou null"
+  }
 }
-Si tu ne peux pas lire le document ou s'il ne s'agit pas d'un contrat d'assurance/énergie, renvoie: {"erreur": "Document non reconnu"}`,
+
+Règles importantes :
+- Si la cotisation est annuelle, divise par 12 pour obtenir le mensuel
+- Le score_optimisation doit refléter la réalité : un contrat récent bien négocié mérite 3-4, un vieux contrat jamais renégocié mérite 7-8
+- Les économies doivent être réalistes (entre 10% et 35% de la cotisation)
+- Si le document n'est pas un contrat d'assurance ou d'énergie, renvoie uniquement : {"erreur": "Document non reconnu - veuillez soumettre un contrat d'assurance ou d'énergie"}`,
               },
             ],
           },

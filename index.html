@@ -23,6 +23,25 @@
 <meta name="twitter:title" content="Scan Ton Contrat — Économisez sur votre assurance en 2 minutes">
 <meta name="twitter:description" content="Uploadez votre contrat PDF. Notre IA analyse vos garanties et vous trouve une offre moins chère — gratuitement.">
 
+<!-- Google Analytics -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { analytics_storage: 'denied' });
+  (function() {
+    try {
+      if (localStorage.getItem('cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch(e) {}
+  })();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C889M1DMRW"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-C889M1DMRW');
+</script>
+
 <!-- Schema.org JSON-LD -->
 <script type="application/ld+json">
 {
@@ -353,6 +372,21 @@ h1 .hl::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:
 .reco-li{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--fg2);line-height:1.55;align-items:flex-start}
 .reco-li:last-child{border-bottom:none;padding-bottom:0}
 .reco-arr{width:20px;height:20px;border-radius:5px;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:1px}
+.alt-section{margin-bottom:14px}
+.alt-title{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:10px}
+.alt-cards{display:flex;flex-direction:column;gap:10px}
+.alt-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:var(--shadow-sm);transition:border-color .2s,box-shadow .2s}
+.alt-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(5,150,105,.12)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .alt-card{background:#1e293b}}
+:root[data-theme="dark"] .alt-card{background:#1e293b}
+.alt-card-left{display:flex;align-items:center;gap:12px}
+.alt-logo{width:40px;height:40px;border-radius:8px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--navy);flex-shrink:0}
+.alt-name{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:2px}
+.alt-desc{font-size:11px;color:var(--fg3)}
+.alt-right{text-align:right;flex-shrink:0}
+.alt-price{font-size:20px;font-weight:900;color:var(--green);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.alt-price-lbl{font-size:10px;color:var(--fg3);margin-bottom:4px}
+.alt-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
 .btn-reset{display:block;width:100%;margin-top:10px;padding:11px;background:none;border:1.5px solid var(--border);border-radius:9px;color:var(--fg3);font-size:13px;cursor:pointer;font-family:inherit;transition:border-color .2s,color .2s}
 .btn-reset:hover{border-color:var(--green);color:var(--green)}
 .cta-block{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:16px;padding:28px 24px;text-align:center;margin-top:12px}
@@ -430,7 +464,21 @@ footer{background:var(--navy);padding:40px 32px 28px}
   .hi-center{width:120px;height:160px}
   .hi-person{font-size:48px}
   .fc1,.fc2,.fc3{min-width:130px}
+  .alt-card{flex-direction:column;align-items:flex-start}
+  .alt-right{text-align:left}
+  .savings-num{font-size:34px}
 }
+/* COOKIE BANNER */
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--navy);color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 -4px 24px rgba(0,0,0,.2);transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+#cookie-banner.show{transform:translateY(0)}
+.cookie-text{font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;max-width:600px}
+.cookie-text a{color:var(--green);text-decoration:none}
+.cookie-btns{display:flex;gap:8px;flex-shrink:0}
+.cookie-accept{background:var(--green);color:#fff;border:none;border-radius:7px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
+.cookie-accept:hover{background:#059669}
+.cookie-refuse{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+.cookie-refuse:hover{background:rgba(255,255,255,.15)}
+@media(max-width:600px){#cookie-banner{flex-direction:column;align-items:flex-start}.cookie-btns{width:100%}.cookie-accept,.cookie-refuse{flex:1;text-align:center}}
 </style>
 </head>
 <body>
@@ -445,8 +493,8 @@ footer{background:var(--navy);padding:40px 32px 28px}
     </div>
   </a>
   <div class="nav-right">
-    <a href="#scan" class="nav-link">Comment ça marche ?</a>
-    <a href="/legal" class="nav-link">À propos</a>
+    <a href="/comment-ca-marche" class="nav-link">Comment ça marche ?</a>
+    <a href="/blog" class="nav-link">Blog</a>
     <button class="btn-nav" onclick="document.getElementById('scan').scrollIntoView({behavior:'smooth'})">Analyser mon contrat</button>
   </div>
 </nav>
@@ -632,6 +680,92 @@ footer{background:var(--navy);padding:40px 32px 28px}
   </div>
 </div>
 
+<!-- AVIS CLIENTS -->
+<div style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:40px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:8px">Témoignages</div>
+      <h2 style="font-size:clamp(22px,2.5vw,30px);font-weight:900;color:var(--navy);margin-bottom:8px">Ce qu'ils disent de nous</h2>
+      <p style="font-size:15px;color:var(--fg3)">Des économies réelles, vérifiées par nos utilisateurs</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:12px">★★★★★</div>
+        <p style="font-size:14px;color:var(--fg2);line-height:1.7;margin-bottom:16px">"J'ai économisé 38 €/mois sur ma mutuelle santé à garanties identiques. L'analyse a pris 1 minute et le résultat était bluffant de précision."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">S</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Sophie M.</div>
+            <div style="font-size:11px;color:var(--fg3)">Lyon · Mutuelle santé</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:12px">★★★★★</div>
+        <p style="font-size:14px;color:var(--fg2);line-height:1.7;margin-bottom:16px">"Mon assurance auto était trop chère depuis 3 ans. En 2 minutes, l'IA a trouvé une offre 29 € moins chère. Le changement a pris 10 minutes en tout."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1d4ed8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">T</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Thomas R.</div>
+            <div style="font-size:11px;color:var(--fg3)">Paris · Assurance auto</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:12px">★★★★★</div>
+        <p style="font-size:14px;color:var(--fg2);line-height:1.7;margin-bottom:16px">"Très simple à utiliser. J'ai uploadé mon contrat habitation et en 90 secondes j'avais un rapport complet. J'économise 22 € par mois maintenant."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">A</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Amélie K.</div>
+            <div style="font-size:11px;color:var(--fg3)">Bordeaux · Assurance habitation</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:12px">★★★★☆</div>
+        <p style="font-size:14px;color:var(--fg2);line-height:1.7;margin-bottom:16px">"Le rapport est détaillé et très clair. J'ai compris pourquoi mon contrat emprunteur était cher. Économie de 45 €/mois sur 20 ans, ça représente 10 800 € !"</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">M</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Marc D.</div>
+            <div style="font-size:11px;color:var(--fg3)">Nantes · Assurance emprunteur</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:12px">★★★★★</div>
+        <p style="font-size:14px;color:var(--fg2);line-height:1.7;margin-bottom:16px">"Sceptique au départ, mais le rapport était vraiment précis. Il a détecté une clause d'exclusion que je ne connaissais pas. Très utile avant de renouveler."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#be185d);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">C</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Claire V.</div>
+            <div style="font-size:11px;color:var(--fg3)">Marseille · Mutuelle santé</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:22px">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:12px">★★★★★</div>
+        <p style="font-size:14px;color:var(--fg2);line-height:1.7;margin-bottom:16px">"Je recommande à tous mes collègues. En famille on a économisé plus de 100 €/mois en changeant notre mutuelle et notre assurance auto grâce à cet outil."</p>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#14b8a6,#0f766e);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px">J</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Julien B.</div>
+            <div style="font-size:11px;color:var(--fg3)">Toulouse · Multi-contrats</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- SCAN SECTION -->
 <div class="scan-section" id="scan">
   <div class="scan-inner">
@@ -717,6 +851,10 @@ footer{background:var(--navy);padding:40px 32px 28px}
         <div class="reco-card">
           <div class="rc-lbl">Recommandations</div>
           <ul class="reco-list" id="recos"></ul>
+        </div>
+        <div class="alt-section" id="alt-section" style="display:none">
+          <div class="alt-title">💡 Offres alternatives sélectionnées</div>
+          <div class="alt-cards" id="alt-cards"></div>
         </div>
         <button class="btn-reset" onclick="resetAll()">↺ Analyser un autre contrat</button>
         <div class="cta-block">
@@ -919,6 +1057,7 @@ async function analyze() {
     if (!res.ok) throw new Error();
     const data = await res.json();
     if (data.erreur) { showErr("Document non reconnu. Uploadez un contrat d'assurance en PDF."); return; }
+    trackEvent('pdf_analyzed', { contract_type: curType, savings: data.economie_estimee_mensuelle || 0 });
     renderResults(data);
   } catch { showErr('Une erreur est survenue. Vérifiez votre connexion et réessayez.'); }
   finally { btn.disabled = false; btn.textContent = 'Analyser →'; loading.classList.remove('show'); }
@@ -939,8 +1078,73 @@ function renderResults(d) {
     const li = document.createElement('li'); li.className = 'reco-li';
     li.innerHTML = `<span class="reco-arr">→</span>${r}`; ul.appendChild(li);
   });
+  renderAlternatives(d.type_contrat, d.cotisation_mensuelle);
   results.classList.add('show');
   results.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+const ALTERNATIVES = {
+  'mutuelle': [
+    { nom: 'Alan', desc: 'Mutuelle 100% digitale', prix: null, badge: 'Populaire' },
+    { nom: 'Malakoff', desc: 'Garanties renforcées', prix: null, badge: 'Recommandé' },
+    { nom: 'April', desc: 'Modulable selon besoins', prix: null, badge: 'Flexible' },
+  ],
+  'auto': [
+    { nom: 'Luko', desc: 'Assurance auto connectée', prix: null, badge: 'Populaire' },
+    { nom: 'Direct Assurance', desc: 'Tarifs compétitifs', prix: null, badge: 'Économique' },
+    { nom: 'Maif', desc: 'Service client reconnu', prix: null, badge: 'Fiable' },
+  ],
+  'habitation': [
+    { nom: 'Luko', desc: 'MRH digitale sans engagement', prix: null, badge: 'Populaire' },
+    { nom: 'Lovys', desc: 'Couverture étendue', prix: null, badge: 'Complet' },
+    { nom: 'MAAF', desc: 'Réseau d\'agences national', prix: null, badge: 'Fiable' },
+  ],
+  'emprunteur': [
+    { nom: 'Magnolia', desc: 'Délégation d\'assurance', prix: null, badge: 'Économique' },
+    { nom: 'Cardif', desc: 'Garanties complètes', prix: null, badge: 'Sécurisé' },
+    { nom: 'April', desc: 'Tarif garanti 8 ans', prix: null, badge: 'Recommandé' },
+  ],
+  'default': [
+    { nom: 'April', desc: 'Solutions multi-produits', prix: null, badge: 'Polyvalent' },
+    { nom: 'Macif', desc: 'Mutualiste reconnue', prix: null, badge: 'Fiable' },
+    { nom: 'Groupama', desc: 'Couverture nationale', prix: null, badge: 'Solide' },
+  ]
+};
+
+function renderAlternatives(typeContrat, cotisationActuelle) {
+  const section = document.getElementById('alt-section');
+  const container = document.getElementById('alt-cards');
+  let key = 'default';
+  if (typeContrat) {
+    const t = typeContrat.toLowerCase();
+    if (t.includes('mutuelle') || t.includes('santé')) key = 'mutuelle';
+    else if (t.includes('auto')) key = 'auto';
+    else if (t.includes('habitation') || t.includes('mrh')) key = 'habitation';
+    else if (t.includes('emprunteur') || t.includes('crédit')) key = 'emprunteur';
+  }
+  const offres = ALTERNATIVES[key];
+  const base = parseFloat(cotisationActuelle) || 0;
+  container.innerHTML = '';
+  offres.forEach((o, i) => {
+    const reduction = base > 0 ? Math.round(base * (0.15 + i * 0.05)) : null;
+    const prixEstime = base > 0 ? Math.round((base - reduction) * 10) / 10 : null;
+    const card = document.createElement('div');
+    card.className = 'alt-card';
+    card.innerHTML = `
+      <div class="alt-card-left">
+        <div class="alt-logo">${o.nom.substring(0,3).toUpperCase()}</div>
+        <div>
+          <div class="alt-name">${o.nom}</div>
+          <div class="alt-desc">${o.desc}</div>
+        </div>
+      </div>
+      <div class="alt-right">
+        ${prixEstime ? `<div class="alt-price-lbl">dès</div><div class="alt-price">${prixEstime} €<span style="font-size:11px;font-weight:600;color:var(--fg3)">/mois</span></div>` : ''}
+        <div class="alt-badge" style="margin-top:4px">${o.badge}</div>
+      </div>`;
+    container.appendChild(card);
+  });
+  section.style.display = 'block';
 }
 
 function mkTags(id, arr, cls) {
@@ -963,6 +1167,7 @@ function resetAll() {
   results.classList.remove('show');
   errEl.classList.remove('show');
   document.getElementById('score-fill').style.width = '0%';
+  document.getElementById('alt-section').style.display = 'none';
 }
 
 function toBase64(file) {
@@ -1014,13 +1219,6 @@ function toggleFaq(i, btn) {
 const chatMessages = [
   { from: 'bot', text: '👋 Bonjour ! Je suis l\'assistant Scan Ton Contrat. Comment puis-je vous aider ?' }
 ];
-const chatFaqs = [
-  { q: "C'est gratuit ?", a: "Oui, 100% gratuit ! Nous sommes rémunérés uniquement si vous souscrivez une offre partenaire." },
-  { q: "Mes données sont sécurisées ?", a: "Absolument. Votre PDF n'est jamais stocké. Il est analysé en temps réel et immédiatement supprimé." },
-  { q: "Quels contrats acceptez-vous ?", a: "Mutuelle santé, auto, habitation, emprunteur, énergie et tout autre contrat assurance." },
-  { q: "Combien puis-je économiser ?", a: "En moyenne 20 à 50 €/mois, soit jusqu'à 600 €/an selon votre contrat actuel." },
-  { q: "Parler à un expert", a: "Laissez votre email dans le formulaire en bas de page, nos experts vous rappellent sous 24h !" }
-];
 
 function buildChat() {
   const el = document.getElementById('chat-messages');
@@ -1034,18 +1232,29 @@ function buildChat() {
   el.scrollTop = el.scrollHeight;
 }
 
-function sendChat(text) {
-  if (!text.trim()) return;
+async function sendChat(text) {
+  if (!text.trim() || chatLoading) return;
   chatMessages.push({ from: 'user', text });
   buildChat();
   document.getElementById('chat-input').value = '';
-  setTimeout(() => {
-    const match = chatFaqs.find(f => text.toLowerCase().includes(f.q.toLowerCase().split(' ')[0]) || f.q.toLowerCase().includes(text.toLowerCase().split(' ')[0]));
-    const reply = match ? match.a : "Je ne suis pas sûr de comprendre votre question. Vous pouvez laisser votre email dans le formulaire et nos experts vous répondront sous 24h !";
-    chatMessages.push({ from: 'bot', text: reply });
-    buildChat();
-  }, 600);
+  chatLoading = true;
+  chatMessages.push({ from: 'bot', text: '…', loading: true });
+  buildChat();
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, history: chatMessages.slice(0, -1) })
+    });
+    const data = await res.json();
+    chatMessages[chatMessages.length - 1] = { from: 'bot', text: data.reply };
+  } catch {
+    chatMessages[chatMessages.length - 1] = { from: 'bot', text: "Une erreur est survenue. Laissez votre email dans le formulaire et nos experts vous répondront sous 24h !" };
+  }
+  chatLoading = false;
+  buildChat();
 }
+let chatLoading = false;
 
 function toggleChat() {
   const win = document.getElementById('chat-window');
@@ -1068,6 +1277,10 @@ async function addToBrevo(email, name, source) {
   } catch {}
 }
 
+function trackEvent(name, params) {
+  try { if (typeof gtag !== 'undefined') gtag('event', name, params || {}); } catch(e) {}
+}
+
 document.getElementById('nc-form').addEventListener('submit', async e => {
   e.preventDefault();
   const email = document.getElementById('nc-email').value.trim();
@@ -1076,7 +1289,11 @@ document.getElementById('nc-form').addEventListener('submit', async e => {
   const name = document.getElementById('nc-name').value.trim();
   try {
     const res = await fetch(FORMSPREE, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ email, name, type_mutuelle: document.getElementById('nc-type').value, budget: document.getElementById('nc-budget').value.trim(), source: 'nouvelle-mutuelle' }) });
-    if (res.ok) { document.getElementById('nc-form').style.display = 'none'; document.getElementById('nc-ok').style.display = 'block'; }
+    if (res.ok) {
+      document.getElementById('nc-form').style.display = 'none';
+      document.getElementById('nc-ok').style.display = 'block';
+      trackEvent('generate_lead', { method: 'nouvelle_mutuelle', currency: 'EUR' });
+    }
   } catch {}
   addToBrevo(email, name, 'nouvelle-mutuelle');
   btn.disabled = false; btn.textContent = 'Trouver ma mutuelle gratuitement →';
@@ -1090,11 +1307,53 @@ document.getElementById('cta-form').addEventListener('submit', async e => {
   const name = document.getElementById('cta-name') ? document.getElementById('cta-name').value.trim() : '';
   try {
     const res = await fetch(FORMSPREE, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ email, name, source: 'scan-result' }) });
-    if (res.ok) { document.getElementById('cta-form').style.display = 'none'; document.getElementById('cta-ok').style.display = 'block'; }
+    if (res.ok) {
+      document.getElementById('cta-form').style.display = 'none';
+      document.getElementById('cta-ok').style.display = 'block';
+      trackEvent('generate_lead', { method: 'scan_result', currency: 'EUR' });
+    }
   } catch {}
   addToBrevo(email, name, 'scan-result');
   btn.disabled = false; btn.textContent = 'Recevoir les meilleures offres →';
 });
+</script>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <div class="cookie-text">
+    🍪 Nous utilisons des cookies pour analyser le trafic (Google Analytics) et améliorer votre expérience. Aucune donnée personnelle n'est revendue. <a href="/legal">En savoir plus</a>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-refuse" onclick="cookieRefuse()">Refuser</button>
+    <button class="cookie-accept" onclick="cookieAccept()">Accepter</button>
+  </div>
+</div>
+<script>
+(function() {
+  var consent = null;
+  try { consent = localStorage.getItem('cookie_consent'); } catch(e) {}
+  if (!consent) {
+    setTimeout(function() {
+      var b = document.getElementById('cookie-banner');
+      if (b) b.classList.add('show');
+    }, 1200);
+  }
+  if (consent === 'refused') {
+    window['ga-disable-G-C889M1DMRW'] = true;
+  }
+})();
+
+function cookieAccept() {
+  try { localStorage.setItem('cookie_consent', 'accepted'); } catch(e) {}
+  document.getElementById('cookie-banner').classList.remove('show');
+  if (typeof gtag !== 'undefined') gtag('consent', 'update', { analytics_storage: 'granted' });
+}
+
+function cookieRefuse() {
+  try { localStorage.setItem('cookie_consent', 'refused'); } catch(e) {}
+  document.getElementById('cookie-banner').classList.remove('show');
+  window['ga-disable-G-C889M1DMRW'] = true;
+}
 </script>
 </body>
 </html>

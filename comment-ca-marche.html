@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment ça marche — Scan Ton Contrat</title>
+<meta name="description" content="Découvrez comment Scan Ton Contrat analyse votre contrat d'assurance en 2 minutes grâce à l'IA et vous trouve des offres moins chères à garanties équivalentes.">
+<link rel="canonical" href="https://www.scantoncontrat.fr/comment-ca-marche">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #10b981;
+  --green2: #059669;
+  --navy: #1a1a2e;
+  --navy2: #16213e;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --fg: #1e293b;
+  --fg2: #475569;
+  --fg3: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 4px 24px rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f172a; --white: #1e293b; --fg: #f1f5f9; --fg2: #94a3b8;
+    --fg3: #64748b; --border: #334155; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f172a; --white: #1e293b; --fg: #f1f5f9; --fg2: #94a3b8;
+  --fg3: #64748b; --border: #334155; color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+
+/* NAV */
+nav { background: var(--navy); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { color: #fff; font-size: 18px; font-weight: 900; text-decoration: none; }
+.nav-logo span { color: var(--green); }
+.nav-cta { background: var(--green); color: #fff; border: none; border-radius: 8px; padding: 9px 20px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; text-decoration: none; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--navy), var(--navy2)); color: #fff; text-align: center; padding: 80px 24px 60px; }
+.hero-badge { display: inline-block; background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3); color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+.hero p { font-size: 18px; color: rgba(255,255,255,.7); max-width: 560px; margin: 0 auto; }
+
+/* STEPS */
+.section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+.section-title { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+.section h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 900; color: var(--fg); margin-bottom: 48px; }
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step { display: flex; gap: 24px; position: relative; padding-bottom: 48px; }
+.step:last-child { padding-bottom: 0; }
+.step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: #fff; font-size: 20px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-line { width: 2px; background: var(--border); flex: 1; margin-top: 8px; }
+.step:last-child .step-line { display: none; }
+.step-content { padding-top: 10px; }
+.step-title { font-size: 20px; font-weight: 800; color: var(--fg); margin-bottom: 8px; }
+.step-desc { font-size: 15px; color: var(--fg2); line-height: 1.7; margin-bottom: 12px; }
+.step-detail { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 16px; font-size: 13px; color: var(--fg2); line-height: 1.6; }
+.step-detail strong { color: var(--fg); }
+
+/* SECURITE */
+.security { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.security-inner { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+.security h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; margin-bottom: 32px; }
+.security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.sec-card { display: flex; gap: 14px; align-items: flex-start; }
+.sec-icon { font-size: 28px; flex-shrink: 0; }
+.sec-title { font-size: 15px; font-weight: 700; color: var(--fg); margin-bottom: 4px; }
+.sec-desc { font-size: 13px; color: var(--fg2); line-height: 1.6; }
+
+/* FAQ */
+.faq-section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+.faq-section h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; margin-bottom: 32px; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+.faq-q { font-size: 15px; font-weight: 700; color: var(--fg); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.faq-a { font-size: 14px; color: var(--fg2); line-height: 1.7; margin-top: 12px; display: none; }
+.faq-a.open { display: block; }
+
+/* CTA FINAL */
+.cta-final { background: linear-gradient(135deg, var(--navy), var(--navy2)); text-align: center; padding: 80px 24px; }
+.cta-final h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: #fff; margin-bottom: 16px; }
+.cta-final p { font-size: 16px; color: rgba(255,255,255,.65); margin-bottom: 32px; }
+.cta-btn { display: inline-block; background: var(--green); color: #fff; text-decoration: none; padding: 18px 48px; border-radius: 10px; font-size: 17px; font-weight: 800; font-family: inherit; transition: background .2s, transform .15s; }
+.cta-btn:hover { background: var(--green2); transform: translateY(-2px); }
+
+@media (max-width: 600px) {
+  .step { gap: 16px; }
+  .step-num { width: 40px; height: 40px; font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Scan Ton <span>Contrat</span></a>
+  <a href="/" class="nav-cta">Analyser mon contrat →</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Transparent & Gratuit</div>
+  <h1>Comment ça marche ?</h1>
+  <p>De l'upload du PDF à l'offre moins chère — en moins de 2 minutes, sans inscription.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Le processus</div>
+  <h2>3 étapes simples pour économiser</h2>
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Uploadez votre contrat PDF</div>
+        <div class="step-desc">Glissez votre contrat d'assurance sur le site ou cliquez pour le sélectionner. Votre PDF reste sur votre appareil — il n'est pas stocké sur nos serveurs.</div>
+        <div class="step-detail">
+          <strong>Contrats acceptés :</strong> mutuelle santé, assurance auto, assurance habitation, assurance emprunteur, contrat d'énergie.<br><br>
+          <strong>Format :</strong> PDF uniquement, taille max 10 Mo.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Notre IA analyse vos garanties</div>
+        <div class="step-desc">Claude, l'IA d'Anthropic, lit votre contrat en entier. Elle extrait vos garanties, identifie vos points faibles, calcule votre cotisation et estime les économies possibles.</div>
+        <div class="step-detail">
+          <strong>Ce que l'IA détecte :</strong> montant de la cotisation, garanties incluses, franchises, plafonds annuels, délais de carence, clauses d'exclusion, et sur-tarifications cachées.<br><br>
+          <strong>Durée :</strong> 30 à 90 secondes selon la taille du document.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Recevez vos offres alternatives</div>
+        <div class="step-desc">Vous obtenez un rapport complet : score d'optimisation, recommandations personnalisées et une sélection d'offres alternatives moins chères à garanties équivalentes.</div>
+        <div class="step-detail">
+          <strong>Dans le rapport :</strong> score /10, garanties détectées, points forts et faibles, économies estimées par mois, et 3 offres alternatives sélectionnées pour votre profil.<br><br>
+          <strong>Laissez votre email</strong> pour qu'un expert vous rappelle avec les meilleures offres sous 24h.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="security">
+  <div class="security-inner">
+    <h2>🔒 Votre sécurité, notre priorité</h2>
+    <div class="security-grid">
+      <div class="sec-card">
+        <div class="sec-icon">📄</div>
+        <div>
+          <div class="sec-title">PDF non stocké</div>
+          <div class="sec-desc">Votre document est envoyé directement à l'IA pour analyse et supprimé immédiatement. Nous ne conservons aucun fichier.</div>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">🔐</div>
+        <div>
+          <div class="sec-title">Transmission chiffrée</div>
+          <div class="sec-desc">Toutes les communications entre votre navigateur et nos serveurs sont chiffrées via HTTPS/TLS.</div>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">🚫</div>
+        <div>
+          <div class="sec-title">Aucune revente de données</div>
+          <div class="sec-desc">Vos données personnelles ne sont jamais revendues à des tiers. Nous respectons le RGPD.</div>
+        </div>
+      </div>
+      <div class="sec-card">
+        <div class="sec-icon">🆓</div>
+        <div>
+          <div class="sec-title">100% gratuit</div>
+          <div class="sec-desc">L'analyse est entièrement gratuite, sans carte bancaire, sans abonnement, sans engagement.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2>Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Mon contrat est-il en sécurité ? <span>+</span></div>
+    <div class="faq-a">Oui. Votre PDF est transmis directement à l'IA d'Anthropic pour analyse et n'est jamais stocké sur nos serveurs. Une fois l'analyse terminée, le document est supprimé automatiquement.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Pourquoi c'est gratuit ? <span>+</span></div>
+    <div class="faq-a">Scan Ton Contrat est gratuit pour les utilisateurs. Nous sommes rémunérés par les assureurs partenaires uniquement si vous choisissez de souscrire à une offre via notre plateforme — à garanties équivalentes ou supérieures.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Quels types de contrats peut-on analyser ? <span>+</span></div>
+    <div class="faq-a">Vous pouvez analyser votre mutuelle santé, assurance auto, assurance habitation (MRH), assurance emprunteur et contrat d'énergie. D'autres types de contrats arrivent prochainement.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Les économies affichées sont-elles garanties ? <span>+</span></div>
+    <div class="faq-a">Les économies affichées sont des estimations basées sur les tarifs du marché actuel pour un profil similaire au vôtre. Les prix réels dépendent de votre situation personnelle. Nos experts vous confirment les économies réelles lors du rappel.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Suis-je obligé de changer d'assurance ? <span>+</span></div>
+    <div class="faq-a">Absolument pas. L'analyse est totalement non engageante. Vous consultez les résultats librement et décidez en toute autonomie. Aucune pression de notre part.</div>
+  </div>
+</div>
+
+<div class="cta-final">
+  <h2>Prêt à économiser ?</h2>
+  <p>Uploadez votre contrat maintenant — gratuit, sans inscription, résultat en 2 minutes.</p>
+  <a href="/" class="cta-btn">Analyser mon contrat gratuitement →</a>
+</div>
+
+<script>
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  const span = el.querySelector('span');
+  const open = a.classList.toggle('open');
+  span.textContent = open ? '−' : '+';
+}
+</script>
+
+</body>
+</html>
