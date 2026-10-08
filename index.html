@@ -468,6 +468,27 @@ footer{background:var(--navy);padding:40px 32px 28px}
   .alt-right{text-align:left}
   .savings-num{font-size:34px}
 }
+/* SCAN TABS SIMPLE */
+.stab{padding:9px 16px;border:none;border-radius:10px;background:transparent;color:var(--fg2);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}
+.stab:hover{background:#e2e8f0}
+.stab-active{background:#fff!important;color:var(--navy)!important;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+/* DEVIS FORMS */
+.ftab{padding:10px 18px;border:2px solid var(--border);border-radius:30px;background:var(--white);color:var(--fg2);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s}
+.ftab:hover{border-color:var(--green);color:var(--green)}
+.ftab-active{border-color:var(--green)!important;background:var(--green)!important;color:#fff!important}
+.devis-card{background:var(--white);border-radius:20px;padding:36px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.step-num{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:20px}
+.form-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fgroup{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.flabel{font-size:13px;font-weight:700;color:var(--navy)}
+.finput{padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;background:var(--bg);color:var(--fg);outline:none;transition:border-color .15s}
+.finput:focus{border-color:var(--green)}
+.fcheck{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--fg2);cursor:pointer}
+.btn-step{background:var(--green);color:#fff;border:none;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn-step:hover{opacity:.88}
+.btn-step-back{background:none;border:1.5px solid var(--border);border-radius:10px;padding:13px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--fg2);transition:border-color .15s}
+.btn-step-back:hover{border-color:var(--navy)}
+@media(max-width:600px){.form-grid2{grid-template-columns:1fr}.devis-card{padding:22px 16px}}
 /* COOKIE BANNER */
 #cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--navy);color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 -4px 24px rgba(0,0,0,.2);transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
 #cookie-banner.show{transform:translateY(0)}
@@ -573,54 +594,6 @@ footer{background:var(--navy);padding:40px 32px 28px}
       <div class="trust-ico-wrap purple">🔒</div>
       <h3>Vos données en sécurité</h3>
       <p>Vos documents ne sont jamais stockés. Traitement en temps réel via connexion chiffrée.</p>
-    </div>
-  </div>
-</div>
-
-<!-- CATEGORIES -->
-<div class="cats">
-  <div class="cats-inner">
-    <div class="section-head">
-      <h2>Quelle assurance analysez-vous ?</h2>
-      <p>Choisissez votre type de contrat, nous nous occupons du reste.</p>
-    </div>
-    <div class="cat-grid">
-      <div class="cat-card blue-card">
-        <span class="cat-illo">🚗</span>
-        <div class="cat-title">Assurance auto</div>
-        <p class="cat-desc">Comparez votre couverture auto et trouvez une offre mieux adaptée à votre profil conducteur.</p>
-        <span class="cat-link">Analyser mon contrat auto</span>
-      </div>
-      <div class="cat-card green-card">
-        <span class="cat-illo">🏠</span>
-        <div class="cat-title">Assurance habitation</div>
-        <p class="cat-desc">Vérifiez que votre logement est bien protégé et que vous ne payez pas trop cher.</p>
-        <span class="cat-link">Analyser mon contrat habitation</span>
-      </div>
-      <div class="cat-card rose-card">
-        <span class="cat-illo">💊</span>
-        <div class="cat-title">Mutuelle santé</div>
-        <p class="cat-desc">Analysez vos remboursements santé et trouvez une mutuelle plus avantageuse.</p>
-        <span class="cat-link">Analyser ma mutuelle</span>
-      </div>
-      <div class="cat-card purple-card">
-        <span class="cat-illo">🏦</span>
-        <div class="cat-title">Assurance emprunteur</div>
-        <p class="cat-desc">Économisez sur votre assurance de prêt immobilier grâce à la délégation d'assurance.</p>
-        <span class="cat-link">Analyser mon assurance emprunteur</span>
-      </div>
-      <div class="cat-card orange-card">
-        <span class="cat-illo">⚡</span>
-        <div class="cat-title">Contrat d'énergie</div>
-        <p class="cat-desc">Vérifiez votre offre électricité ou gaz et trouvez un tarif plus compétitif.</p>
-        <span class="cat-link">Analyser mon contrat énergie</span>
-      </div>
-      <div class="cat-card teal-card">
-        <span class="cat-illo">📋</span>
-        <div class="cat-title">Autre contrat</div>
-        <p class="cat-desc">Notre IA analyse n'importe quel contrat et identifie les points à optimiser.</p>
-        <span class="cat-link">Analyser un autre contrat</span>
-      </div>
     </div>
   </div>
 </div>
@@ -771,33 +744,27 @@ footer{background:var(--navy);padding:40px 32px 28px}
   <div class="scan-inner">
     <div class="scan-card">
       <div class="scan-head">
-        <h2>📄 Analysez votre contrat maintenant</h2>
-        <p>Sélectionnez le type de contrat puis uploadez votre PDF</p>
+        <h2>Analysez votre contrat</h2>
+        <p>Sélectionnez le type puis uploadez votre PDF — résultat en 2 minutes</p>
       </div>
 
-      <div class="scan-types" id="scan-types">
-        <div class="stype active" onclick="setStype('mutuelle',this)"><span class="stype-emo">💊</span><div class="stype-lbl">Mutuelle</div></div>
-        <div class="stype" onclick="setStype('auto',this)"><span class="stype-emo">🚗</span><div class="stype-lbl">Auto</div></div>
-        <div class="stype" onclick="setStype('habitation',this)"><span class="stype-emo">🏠</span><div class="stype-lbl">Habitation</div></div>
-        <div class="stype" onclick="setStype('emprunteur',this)"><span class="stype-emo">🏦</span><div class="stype-lbl">Emprunteur</div></div>
-        <div class="stype" onclick="setStype('energie',this)"><span class="stype-emo">⚡</span><div class="stype-lbl">Énergie</div></div>
-        <div class="stype" onclick="setStype('autre',this)"><span class="stype-emo">📋</span><div class="stype-lbl">Autre</div></div>
+      <!-- Type selector simple -->
+      <div style="background:#f1f5f9;border-radius:14px;padding:12px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:8px" id="scan-types">
+        <button class="stab stab-active" onclick="setStype('mutuelle',this)">💊 Mutuelle</button>
+        <button class="stab" onclick="setStype('auto',this)">🚗 Auto</button>
+        <button class="stab" onclick="setStype('habitation',this)">🏠 Habitation</button>
+        <button class="stab" onclick="setStype('emprunteur',this)">🏦 Emprunteur</button>
+        <button class="stab" onclick="setStype('autre',this)">📋 Autre</button>
       </div>
 
-      <div class="dz" id="dropzone">
+      <!-- Bouton principal qui ouvre le file picker -->
+      <label for="file-input" id="scan-label" style="display:block;background:var(--green);color:#fff;text-align:center;padding:16px;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;margin-bottom:12px;transition:opacity .15s" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+        Scanner mon contrat →
+      </label>
+      <div style="text-align:center;font-size:12px;color:var(--fg3);margin-bottom:8px">PDF uniquement · Max 10 Mo · Chiffré HTTPS</div>
+
+      <div class="dz" id="dropzone" style="display:none">
         <input type="file" accept=".pdf" id="file-input">
-        <div class="dz-ico">📄</div>
-        <div class="dz-title">Glissez votre contrat PDF ici</div>
-        <p class="dz-sub">ou cliquez pour sélectionner depuis votre appareil</p>
-        <button class="btn-dz">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Choisir un fichier
-        </button>
-        <div class="dz-hints">
-          <span class="dz-hint">PDF uniquement</span>
-          <span class="dz-hint">Max 10 Mo</span>
-          <span class="dz-hint">Chiffré HTTPS</span>
-        </div>
       </div>
 
       <div class="file-card" id="file-card">
@@ -871,11 +838,6 @@ footer{background:var(--navy);padding:40px 32px 28px}
       </div>
     </div>
 
-    <!-- Pas encore de mutuelle -->
-    <div style="text-align:center;margin-top:20px">
-      <span style="font-size:13px;color:var(--fg3)">Vous n'avez pas encore de mutuelle ?</span>
-      <button onclick="openModal()" style="background:none;border:none;color:var(--green);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-left:6px">Trouver ma première mutuelle →</button>
-    </div>
   </div>
 </div>
 
@@ -1003,8 +965,43 @@ function setTab(t, el) {
 // Scan type
 function setStype(t, el) {
   curType = t;
-  document.querySelectorAll('#scan-types .stype').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
+  document.querySelectorAll('#scan-types .stab').forEach(b => b.classList.remove('stab-active'));
+  el.classList.add('stab-active');
+}
+
+// DEVIS FORMS
+function showFormTab(tab, el) {
+  document.querySelectorAll('.ftab-content').forEach(c => c.style.display = 'none');
+  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('ftab-active'));
+  document.getElementById('ftab-' + tab).style.display = 'block';
+  el.classList.add('ftab-active');
+}
+
+function mutStep(n) {
+  [1,2,3].forEach(i => document.getElementById('mut-step'+i).style.display = i===n ? 'block' : 'none');
+}
+function autoStep(n) {
+  [1,2,3].forEach(i => document.getElementById('auto-step'+i).style.display = i===n ? 'block' : 'none');
+}
+
+function submitDevis(type) {
+  const map = {
+    mutuelle: { prenom: 'mut-prenom', email: 'mut-email', tel: 'mut-tel', ok: 'mut-ok' },
+    auto:     { prenom: 'auto-prenom', email: 'auto-email', tel: 'auto-tel', ok: 'auto-ok' },
+    habitation: { prenom: 'hab-prenom', email: 'hab-email', tel: 'hab-tel', ok: 'hab-ok' },
+    emprunteur: { prenom: 'emp-prenom', email: 'emp-email', tel: 'emp-tel', ok: 'emp-ok' },
+  };
+  const m = map[type];
+  const email = document.getElementById(m.email).value.trim();
+  if (!email || !email.includes('@')) { alert('Veuillez saisir un email valide.'); return; }
+  const prenom = document.getElementById(m.prenom).value.trim();
+  const tel = document.getElementById(m.tel).value.trim();
+  fetch('/api/save-lead', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ email, prenom, telephone: tel, type_contrat: type, source: 'devis_formulaire' })
+  }).catch(() => {});
+  document.getElementById(m.ok).style.display = 'block';
 }
 
 // Cat cards → scroll to scan
