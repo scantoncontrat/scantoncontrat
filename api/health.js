@@ -4,25 +4,11 @@ export default async function handler(req, res) {
   const checks = { anthropic: false, supabase: false }
   const errors = []
 
-  // Check Anthropic
-  try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5',
-        max_tokens: 10,
-        messages: [{ role: 'user', content: 'ping' }],
-      }),
-    })
-    checks.anthropic = r.ok
-    if (!r.ok) errors.push('Anthropic API down: ' + r.status)
-  } catch (e) {
-    errors.push('Anthropic unreachable: ' + e.message)
+  // Check Anthropic — vérifie que la clé est configurée (sans appel API coûteux)
+  if (process.env.ANTHROPIC_API_KEY && process.env.ANTHROPIC_API_KEY.startsWith('sk-ant-')) {
+    checks.anthropic = true
+  } else {
+    errors.push('Anthropic API key manquante ou invalide')
   }
 
   // Check Supabase
