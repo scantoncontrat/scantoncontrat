@@ -539,9 +539,9 @@ footer{background:var(--navy);padding:40px 32px 28px}
         <button class="ttab" onclick="setTab('emprunteur',this)"><span class="ttab-ico">🏦</span>Emprunteur</button>
         <button class="ttab" onclick="setTab('autre',this)"><span class="ttab-ico">📋</span>Autre</button>
       </div>
-      <button class="btn-compare" onclick="document.getElementById('scan').scrollIntoView({behavior:'smooth'})">
+      <label for="file-input" class="btn-compare" style="cursor:pointer;display:inline-block">
         Scanner mon contrat →
-      </button>
+      </label>
     </div>
     <div class="hero-right">
       <div class="hero-illustration">
@@ -763,9 +763,8 @@ footer{background:var(--navy);padding:40px 32px 28px}
       </label>
       <div style="text-align:center;font-size:12px;color:var(--fg3);margin-bottom:8px">PDF uniquement · Max 10 Mo · Chiffré HTTPS</div>
 
-      <div class="dz" id="dropzone" style="display:none">
-        <input type="file" accept=".pdf" id="file-input">
-      </div>
+      <input type="file" accept=".pdf" id="file-input" style="position:absolute;opacity:0;width:0;height:0">
+      <div class="dz" id="dropzone" style="display:none"></div>
 
       <div class="file-card" id="file-card">
         <div class="fi">📄</div>
