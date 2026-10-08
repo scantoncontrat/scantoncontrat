@@ -418,6 +418,24 @@ h1 .hl::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:
 .btn-modal:hover{background:var(--green2)}
 .modal-ok{background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d;border-radius:9px;padding:13px;font-size:13px;font-weight:700;display:none;text-align:center}
 
+/* RAPPEL */
+.rappel-section{background:linear-gradient(135deg,#0f1f4a,#1a3057);padding:60px 32px}
+.rappel-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.rappel-badge{display:inline-block;background:rgba(16,185,129,.2);color:#10b981;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+.rappel-text h2{font-size:clamp(22px,2.5vw,30px);font-weight:900;color:#fff;margin-bottom:12px;letter-spacing:-.03em;line-height:1.2}
+.rappel-text p{color:rgba(255,255,255,.65);font-size:15px;margin-bottom:20px;line-height:1.7}
+.rappel-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.rappel-list li{color:rgba(255,255,255,.8);font-size:14px;font-weight:600}
+.rappel-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px}
+.rappel-form{display:flex;flex-direction:column;gap:10px}
+.rappel-inp{padding:12px 16px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:9px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.rappel-inp:focus{border-color:#10b981}
+.rappel-inp::placeholder{color:rgba(255,255,255,.4)}
+.rappel-inp option{background:#0f1f4a;color:#fff}
+.rappel-btn{padding:13px;background:var(--green);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(5,150,105,.4);transition:background .2s,transform .15s}
+.rappel-btn:hover{background:var(--green2);transform:translateY(-1px)}
+.rappel-ok{background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:#34d399;border-radius:9px;padding:13px;font-size:14px;font-weight:700;display:none;text-align:center}
+
 /* FOOTER */
 footer{background:var(--navy);padding:40px 32px 28px}
 .footer-inner{max-width:1100px;margin:0 auto}
@@ -449,6 +467,8 @@ footer{background:var(--navy);padding:40px 32px 28px}
   .steps{padding:40px 16px}
   .scan-section{padding:40px 16px}
   .scan-card{padding:24px 18px}
+  .rappel-inner{grid-template-columns:1fr}
+  .rappel-section{padding:40px 16px}
   footer{padding:32px 16px 24px}
   .footer-top{gap:24px}
   .footer-bottom{flex-direction:column;gap:4px}
@@ -918,6 +938,40 @@ footer{background:var(--navy);padding:40px 32px 28px}
   </div>
 </div>
 
+<!-- RAPPEL -->
+<div class="rappel-section">
+  <div class="rappel-inner">
+    <div class="rappel-text">
+      <div class="rappel-badge">📞 Rappel gratuit</div>
+      <h2>Vous préférez être accompagné ?</h2>
+      <p>Laissez vos coordonnées, on vous rappelle dans la journée pour analyser votre contrat et trouver la meilleure offre ensemble.</p>
+      <ul class="rappel-list">
+        <li>✓ Rappel sous 24h</li>
+        <li>✓ Aucun engagement</li>
+        <li>✓ Conseiller dédié</li>
+      </ul>
+    </div>
+    <div class="rappel-form-wrap">
+      <form class="rappel-form" onsubmit="submitRappel(event)">
+        <input class="rappel-inp" type="text" id="r-prenom" placeholder="Votre prénom" required>
+        <input class="rappel-inp" type="tel" id="r-tel" placeholder="Votre téléphone" required>
+        <input class="rappel-inp" type="email" id="r-email" placeholder="Votre email">
+        <select class="rappel-inp" id="r-contrat">
+          <option value="">Quel contrat souhaitez-vous optimiser ?</option>
+          <option>Mutuelle santé</option>
+          <option>Assurance auto</option>
+          <option>Assurance habitation</option>
+          <option>Assurance emprunteur</option>
+          <option>Contrat énergie (gaz/élec)</option>
+          <option>Autre</option>
+        </select>
+        <button type="submit" class="rappel-btn" id="r-btn">Me faire rappeler gratuitement →</button>
+        <div class="rappel-ok" id="r-ok">✅ Merci ! Nous vous rappelons dans la journée.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -981,6 +1035,24 @@ function mutStep(n) {
 }
 function autoStep(n) {
   [1,2,3].forEach(i => document.getElementById('auto-step'+i).style.display = i===n ? 'block' : 'none');
+}
+
+async function submitRappel(e) {
+  e.preventDefault();
+  const prenom = document.getElementById('r-prenom').value.trim();
+  const tel = document.getElementById('r-tel').value.trim();
+  const email = document.getElementById('r-email').value.trim();
+  const contrat = document.getElementById('r-contrat').value;
+  const btn = document.getElementById('r-btn');
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+  await fetch('/api/save-lead', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ email: email || tel + '@rappel.stc', prenom, telephone: tel, type_contrat: contrat, source: 'rappel_homepage' })
+  }).catch(() => {});
+  document.getElementById('r-btn').style.display = 'none';
+  document.getElementById('r-ok').style.display = 'block';
 }
 
 function submitDevis(type) {
