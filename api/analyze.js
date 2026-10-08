@@ -68,7 +68,7 @@ Règles importantes :
     if (!response.ok) {
       const err = await response.json();
       console.error('Anthropic error:', err);
-      return res.status(500).json({ error: 'Erreur analyse IA' });
+      return res.status(500).json({ error: 'Erreur analyse IA', detail: err });
     }
 
     const data = await response.json();
