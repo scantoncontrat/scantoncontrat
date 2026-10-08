@@ -1081,6 +1081,7 @@ function renderResults(d) {
   renderAlternatives(d.type_contrat, d.cotisation_mensuelle);
   results.classList.add('show');
   results.scrollIntoView({behavior:'smooth', block:'start'});
+  window._lastAnalyse = d;
 }
 
 const ALTERNATIVES = {
@@ -1306,14 +1307,20 @@ document.getElementById('cta-form').addEventListener('submit', async e => {
   const btn = e.target.querySelector('button'); btn.disabled = true; btn.textContent = 'Envoi…';
   const name = document.getElementById('cta-name') ? document.getElementById('cta-name').value.trim() : '';
   try {
-    const res = await fetch(FORMSPREE, { method: 'POST', headers: {'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ email, name, source: 'scan-result' }) });
-    if (res.ok) {
-      document.getElementById('cta-form').style.display = 'none';
-      document.getElementById('cta-ok').style.display = 'block';
-      trackEvent('generate_lead', { method: 'scan_result', currency: 'EUR' });
+    // Envoyer le rapport d'analyse par email
+    if (window._lastAnalyse) {
+      fetch('/api/send-report', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ email, prenom: name, analyse: window._lastAnalyse })
+      }).catch(() => {});
     }
+    // Inscrire en base
+    addToBrevo(email, name, 'scan-result');
+    document.getElementById('cta-form').style.display = 'none';
+    document.getElementById('cta-ok').style.display = 'block';
+    trackEvent('generate_lead', { method: 'scan_result', currency: 'EUR' });
   } catch {}
-  addToBrevo(email, name, 'scan-result');
   btn.disabled = false; btn.textContent = 'Recevoir les meilleures offres →';
 });
 </script>
