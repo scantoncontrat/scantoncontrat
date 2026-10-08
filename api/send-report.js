@@ -1,3 +1,7 @@
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
@@ -109,6 +113,14 @@ export default async function handler(req, res) {
       const err = await response.json()
       console.error('Brevo error:', err)
       return res.status(500).json({ error: 'Erreur envoi email' })
+    }
+
+    // Sauvegarder le client dans Supabase (upsert sur email)
+    if (process.env.SUPABASE_URL) {
+      supabase.from('clients').upsert(
+        { email, prenom: prenom || null, statut: 'actif', consent_contact: true },
+        { onConflict: 'email' }
+      ).then(() => {}).catch(() => {})
     }
 
     return res.status(200).json({ success: true })
